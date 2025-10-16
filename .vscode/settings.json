@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": ["src/android"],
+    "java.project.referencedLibraries": [
+        "${env:ANDROID_SDK_ROOT}/platforms/android-34/android.jar"
+    ]
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-toastyplugin"
+        version="0.0.1">
+
+  <name>ToastyPlugin</name>
+  <description>An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.</description>
+  <license>MIT</license>
+  <keywords>cordova,android,toast,message,alert</keywords>
+  <repo>https://github.com/asher27/ToastyPlugin.git</repo>
+
+  <!-- 최신 환경 안내: CLI 11+, cordova-android 13+ (JDK 17) -->
+  <engines>
+    <engine name="cordova"          version=">=11.0.0"/>
+    <engine name="cordova-android"  version=">=13.0.0"/>
+  </engines>
+
+  <!-- JS 브릿지 노출 경로(원문과 동일): window.plugins.toastyPlugin -->
+  <js-module src="www/toastyplugin.js" name="toastyPlugin">
+    <clobbers target="window.plugins.toastyPlugin" />
+  </js-module>
+
+  <platform name="android">
+    <!-- (권장) 최신 Cordova는 target="config.xml"로 선언하면 플랫폼 경로를 자동 매핑 -->
+    <!-- 구(舊) 튜토리얼은 target="res/xml/config.xml"을 썼던 사례가 있으나, 최신 도구에선 아래가 더 안전 -->
+    <config-file target="config.xml" parent="/*">
+      <feature name="ToastyPlugin">
+        <param name="android-package" value="com.asher27.cordova.plugin.ToastyPlugin"/>
+      </feature>
+    </config-file>
+
+    <!-- Java 소스 복사: 패키지 경로와 target-dir 일치 필수 -->
+    <source-file src="src/android/ToastyPlugin.java"
+                 target-dir="src/com/asher27/cordova/plugin" />
+  </platform>
+
+</plugin>
